@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BAI_6_PART_1</title>
+        <style>
+            .page-background {
+                width: 460px;
+                height: 300px;
+                background-color: #d6feff;
+                padding-top: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .my-hobby {
+                background-color: white;
+                margin-top: 5px;
+                padding-top: 10px;
+            }
+            form {
+                padding-bottom: 10px;
+            }
+            .form-header {
+                color: white;
+                background: red;
+                text-align: center;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-top: -20px;
+            }
+            .form-input {
+                padding-bottom: 5px;
+            }
+            .form-label {
+                color: #001eac;
+                text-align:right;
+                display: inline-block;
+                width: 140px;
+            }
+            .submit-data {
+                margin-left: 140px;
+                margin-top: 10px;
+
+            }
+            .hobby-select{
+                display: flex;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-background">
+            <div class="my-hobby">
+                <div class="form-header">
+                    <h2>SỞ THÍCH CỦA BẠN</h2>
+                </div>
+                <form method="get" action="/BUOI_3/BAI_6_PART_1.html">
+                    <div class="form-input">
+                        <label class="form-label">Họ và tên</label>
+                        <input type = "text" name="your-name" placeholder="" size="15"/>
+                    </div>
+                    <div class="form-input">
+                        <label class="form-label">Email</label>
+                        <input type = "text" name="email" placeholder="" size="15"/>
+                    </div>
+                    <div class="hobby-select">
+                        <label class="form-label">Sở thích</label>
+                        <div class="bobby-checkbox">
+                            <input type="checkbox" name="hobby" value="sport">
+                            <label class="hobby"> Thể thao </label>
+                            <input type="checkbox" name="hobby" value="music">
+                            <label class="hobby"> Âm nhạc </label>                    
+                            <input type="checkbox" name="hobby" value="reading">
+                            <label class="hobby"> Đọc sách </label><br>
+                            <input type="checkbox" name="hobby" value="web-surfing">
+                            <label class="hobby"> Lướt web </label>
+                            <input type="checkbox" name="hobby" value="playing-games">
+                            <label class="hobby"> Chơi game </label>
+                            <input type="checkbox" name="hobby" value="movies">
+                            <label class="hobby"> Điện ảnh </label><br>
+                            <input type="checkbox" name="hobby" value="traveling">
+                            <label class="hobby"> Du lịch </label>
+                        </div>
+                    </div> 
+                    <div class="submit-data">
+                        <input type = "button" name="submitButton" value="Gửi thông tin"/>
+                        <input type = "button" name="resetForm" value="Nhập lại"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+
+
