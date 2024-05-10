@@ -1,0 +1,39 @@
+.page-background {
+    width: 460px;
+    height: 300px;
+}
+.my-hobby {
+    background-color: #fffcad;
+    margin-top: 5px;
+    padding-top: 10px;
+}
+form {
+    padding-bottom: 10px;
+}
+textarea {
+    resize: none;
+}
+.form-header {
+    color: #0f3dfb;
+    background: #d5fcd7;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -20px;
+}
+.form-input {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: baseline;
+}
+.form-label {
+    color: #001eac;
+    text-align:left;
+    display: inline-block;
+    width: 100px;
+}
+.submit-data {
+    margin-left: 110px;
+    margin-top: 10px;
+
+}

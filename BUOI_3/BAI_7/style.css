@@ -1,0 +1,108 @@
+.form-container {
+    font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    letter-spacing: .01em;
+    margin: 0 auto 10px auto;
+    overflow: scroll;
+}
+.form-header {
+    margin: 0 0 5px 0;
+    padding: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+.form-header h2 {
+    font-weight: normal;
+    font-size: 160%;
+    margin: 0 0 5px 0;
+    clear: left;
+}
+.form-header p {
+    font-size: 95%;
+    line-height: 135%;
+}
+.form-input {
+    padding: 10px;
+}
+.form-input label {
+    font-size: 95%;
+    font-weight: bold;
+    color: #222;
+    line-height: 150%;
+    margin: 0;
+    padding: 0 0 3px 0;
+    border: none;
+    display: block;
+    white-space: normal;
+    width: 100%;
+}
+.form-input select {
+    width: 50%;
+}
+.hoverable:hover {
+    background-color: #fff7c0;
+}
+.form-input #special:hover {
+    background-color: white;
+}
+.form-select {
+    display: inline-grid;
+}
+.form-select input {
+    padding-top: 20px;
+}
+.select {
+    display: flex;
+}
+.select label {
+    padding-top: 6px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+.select #gender-other {
+    margin-left: 32px;
+    margin-top: 4px;
+    padding-top: 0px;
+}
+.form-input #usd {
+    font-weight: 400;
+}
+.form-input #features {
+    width: 100%;
+}
+.price-input {
+    display: flex;
+}
+.price-input #dollars {
+    width: 80px;
+}
+.price-input #cents {
+    width: 40px;
+}
+.price-input #symbol {
+    padding-right: 5px;
+}
+.price-input #dot {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.table-radio {
+    display: grid;
+}
+.table-radio input[type=radio]  {
+    height: 16px;
+}
+.table-radio .table-label {
+    text-align: center;
+}
+.form-table {
+    width: 100%;
+}
+.form-table tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+.form-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #e6e6e6;
+    color: black;
+}
