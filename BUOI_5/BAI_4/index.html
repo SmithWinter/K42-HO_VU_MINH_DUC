@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BAI_4</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="section-container">
+            <div class="header-container">
+                <h3> Section 1</h3>
+            </div>
+            <div class="input-container">
+                <label for="physics">Physics</label>
+                <input id="physics" name="physics" placeholder="Input score" type="number" required>
+                <label for="chemistry">Chemistry</label>
+                <input id="chemistry" name="chemistry" placeholder="Input score" type="number" required>
+                <label for="biology">Biology</label>
+                <input id="biology" name="biology" placeholder="Input score" type="number" required>
+            </div>
+            <div class="button-container">
+                <button onclick="processScore()">
+                    Calculate total and average
+                </button>
+            </div>
+            <div id="section-1-result">
+
+            </div>
+        </div>
+        <div class="section-container">
+            <div class="header-container">
+                <h3> Section 2</h3>
+            </div>
+            <div class="input-container">
+                <label for="celsius">Temperature in Celsius:</label>
+                <input id="celsius" name="celsius" placeholder="Input temperature" type="number" required>
+            </div>
+            <div class="button-container">
+                <button onclick="processTemperature()">
+                    Convert to Fahrenheit
+                </button>
+            </div>
+            <div id="section-2-result">
+
+            </div>
+        </div>
+
+        <div class="section-container">
+            <div class="header-container">
+                <h3> Section 3</h3>
+            </div>
+            <div class="input-container">
+                <label for="radius">Input radius:</label>
+                <input id="radius" name="radius" placeholder="Input radius" type="number" required>
+            </div>
+            <div class="button-container">
+                <button onclick="processCircle()">
+                    Calculate Area of a Circle
+                </button>
+            </div>
+            <div id="section-3-result">
+
+            </div>
+        </div>
+
+        <script src="./script.js"></script>
+
+    </body>
+</html>
