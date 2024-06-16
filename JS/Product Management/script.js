@@ -1,57 +1,126 @@
-let products = ["Product 1", "Product 2", "Product 3"];
+const productList = [
+    {
+        name: "Product 1",
+        quantity: 1,
+        price: 5 
+    },
+    {
+        name: "Product 2",
+        quantity: 1,
+        price: 5 
+    },
+    {
+        name: "Product 3",
+        quantity: 1,
+        price: 5 
+    }
+]
 
-function displayProducts() {
-    const productTableBody = document.getElementById('productTable').getElementsByTagName('tbody')[0];
-    productTableBody.innerHTML = ''; // Clear the table
+const localStorageData = localStorage.getItem('productList')
 
-    products.forEach((product, index) => {
+
+function displayProducts(productList) {
+    const productTableBody = document.getElementById('product-table').getElementsByTagName('tbody')[0];
+    productTableBody.innerHTML = ''
+
+    productList.map((product, index) => {
         let row = productTableBody.insertRow();
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-        let cell3 = row.insertCell(2);
 
-        cell1.innerHTML = index + 1;
-        cell2.innerHTML = product;
-        cell2.onclick = function() {
-            document.getElementById('editProductName').value = product;
-            document.getElementById('editProductForm').style.display = 'block';
-            document.getElementById('editProductForm').onsubmit = function(event) {
-                event.preventDefault();
-                editProduct(index);
-            };
-        };
-        cell3.innerHTML = `<button onclick="deleteProduct(${index})">Delete</button>`;
-    });
+        let id = row.insertCell(0);
+        let name = row.insertCell(1);
+        let quantity = row.insertCell(2);
+        let price = row.insertCell(3);
+        let action = row.insertCell(4);
+
+        id.innerHTML = index + 1;
+        name.innerHTML = product.name;
+        quantity.innerHTML = product.quantity;
+        price.innerHTML = product.price;
+
+        action.innerHTML = `
+            <div>
+                <button id="edit-product" data-bs-toggle="modal" data-bs-target="#product-modal" onclick="editProduct(${index})">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                </button>
+                <button id="delete-product" onclick="deleteProduct(${index})">
+                    <i class="fa-solid fa-trash"></i> Delete
+                </button>
+            </div>
+        `;
+
+    })
 }
-
-
-
-function addProduct() {
-    const newProductName = document.getElementById('newProductName').value;
-    products.push(newProductName);
-    displayProducts();
-    document.getElementById('newProductName').value = ''; 
-    alert('Product added');
-}
-
 function editProduct(index) {
-    const newProductName = document.getElementById('editProductName').value;
-    products[index] = newProductName;
-    displayProducts();
-    document.getElementById('editProductForm').style.display = 'none';
-    alert('Product modified');
+    localStorage.setItem('isNewProduct', false);
+    let data = JSON.parse(localStorageData) || productList
+
+    const modalData = data.filter((item, position) => { 
+        return position === index
+    })
+    document.getElementById('product-name').value = modalData[0].name
+    document.getElementById('product-quantity').value = modalData[0].quantity
+    document.getElementById('product-price').value = modalData[0].price
+
+    localStorage.setItem('editIndex', index);
 }
+
 
 function deleteProduct(index) {
-    products.splice(index, 1);
-    displayProducts();
+    if (confirm("Are you sure?")) {
+        let data = JSON.parse(localStorageData) || productList
+        data.splice(index, 1);
+        localStorage.setItem('productList', JSON.stringify(data));
+        displayProducts(data);
+    }
+}
+
+function resetForm() {
+    document.getElementById('product-form').reset();
+    let addModal = bootstrap.Modal.getInstance(document.getElementById('product-modal'));
+    addModal.hide()
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    displayProducts();
-
-    document.getElementById('addProductForm').onsubmit = function(event) {
+    let data = JSON.parse(localStorageData) || productList
+    
+    if (data) {
+        displayProducts(data);
+    } else {
+        localStorage.setItem('productList', JSON.stringify(productList));
+        displayProducts(productList);
+    }
+    document.getElementById('product-form').onsubmit = (event) => {
         event.preventDefault();
-        addProduct();
+        if (confirm("Are you sure?")) {
+            const isNewProduct = JSON.parse(localStorage.getItem('isNewProduct'))
+            if (isNewProduct) {
+                const newProduct = {
+                    name: document.getElementById('product-name').value,
+                    quantity: Number(document.getElementById('product-quantity').value),
+                    price: Number(document.getElementById('product-price').value)
+                }
+        
+                data.push(newProduct)
+                localStorage.setItem('productList', JSON.stringify(data));
+                document.getElementById('product-form').reset();
+                displayProducts(data);
+                resetForm()
+            } else {
+                const editIndex = localStorage.getItem('editIndex')
+                const editProduct = {
+                    name: document.getElementById('product-name').value,
+                    quantity: Number(document.getElementById('product-quantity').value),
+                    price: Number(document.getElementById('product-price').value)
+                }
+                data[editIndex] = editProduct
+                localStorage.setItem('productList', JSON.stringify(data));
+                displayProducts(data);
+                resetForm()
+            }
+
+        }
     };
+    document.getElementById('add-product').addEventListener('click', () => {
+        localStorage.setItem('isNewProduct', true);
+    })
 });
